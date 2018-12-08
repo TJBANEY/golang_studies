@@ -1,11 +1,8 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-var myNumber = 1.23
-
-func main(){
-	fmt.Println("Hi There")
+func main() {
+	card := "Ace of Spades"
+	fmt.Println(card)
 }
