@@ -3,8 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	cards := newDeckFromFile("my_cards")
-	// cards := newDeck()
+	// cards := newDeckFromFile("my_cards")
+	cards := newDeck()
+	cards.shuffle()
 	// cards.saveToFile("my_cards")
 
 	// hand, remainingCards := deal(cards, 5)
