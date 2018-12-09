@@ -6,8 +6,23 @@ import "fmt"
 type deck []string
 
 // (d deck) is a receiver
+// receiver = any variable of type 'deck' now gets access to the print method
 func (d deck) print() {
-	for index, card := range d {
-		fmt.Println(index, card)
+	for _, card := range d {
+		fmt.Println(card)
 	}
+}
+
+func newDeck() deck {
+	cards := deck{}
+
+	cardSuits := []string{"Hearts", "Spades", "Clubs", "Diamonds"}
+	cardValues := []string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
+
+	for _, value := range cardValues {
+		for _, suit := range cardSuits {
+			cards = append(cards, value+" of "+suit)
+		}
+	}
+	return cards
 }
