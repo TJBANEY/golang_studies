@@ -13,9 +13,26 @@ func main() {
 	// fmt.Println("======")
 	// remainingCards.print()
 
-	// Create Players from player struct
-	tim := player{firstName: "Timothy", lastName: "Baney"}
-	fmt.Println(tim)
-
 	// fmt.Println(cards.toString())
+
+	// Create Players from player struct
+
+	// tim := player{firstName: "Timothy", lastName: "Baney"}
+	// fmt.Println(tim)
+
+	var alex player
+	alex.firstName = "Alex"
+	alex.lastName = "Test"
+	fmt.Printf("%+v", alex)
+
+	jim := player{
+		firstName: "Jim",
+		lastName:  "John",
+		contact: contactInfo{
+			email:   "jim@gmail.com",
+			zipCode: 72758,
+		},
+	}
+
+	fmt.Printf("%+v", jim)
 }
