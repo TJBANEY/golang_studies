@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	// cards := newDeckFromFile("my_cards")
@@ -28,11 +30,31 @@ func main() {
 	jim := player{
 		firstName: "Jim",
 		lastName:  "John",
-		contact: contactInfo{
+		contactInfo: contactInfo{
 			email:   "jim@gmail.com",
 			zipCode: 72758,
 		},
 	}
 
-	fmt.Printf("%+v", jim)
+	// This won't work because Golang is a 'Pass by Value' language meaning that the receiver in newFirstName is going to copy jim value at RAM address 1, and save the copy at another RAM address
+	jim.newFirstName("Jimmy")
+	jim.printSelf()
+
+	// We need to create a pointer to jim's address in memory, and update the receiver in newFirstName to accept a pointer as a parameter using an asterisk before the value
+	jimPointer := &jim
+	jimPointer.newFirstNamePointer("Jimmy")
+	jim.printSelf()
+}
+
+// receiver will copy to new RAM address here
+func (p player) newFirstName(newName string) {
+	p.firstName = newName
+}
+
+func (p *player) newFirstNamePointer(newName string) {
+	p.firstName = newName
+}
+
+func (p player) printSelf() {
+	fmt.Printf("%+v", p)
 }
