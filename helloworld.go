@@ -44,6 +44,22 @@ func main() {
 	jimPointer := &jim
 	jimPointer.newFirstNamePointer("Jimmy")
 	jim.printSelf()
+
+	// print RAM address value for curiousity and attempt printing address fetch for pointer, and non-pointer values.
+
+	// Should return RAM address
+	fmt.Printf("%+v", jimPointer)
+
+	// Should return value of jimPointer RAM address value
+	fmt.Printf("%+v", *jimPointer)
+
+	// Not sure what this will return, since jim is a struct, not a RAM address - Tested and it does raise an error
+	// fmt.Printf("%+v", *jim)
+
+	// creating new pointer variable to pass in to function receiver is a little tedious, and there is a shortcut for it.
+	// As long as the type is correct, you can pass in a non pointer value to a function receiver expecting a pointer value.
+	jim.newFirstNamePointer("Blurbington")
+	jim.printSelf()
 }
 
 // receiver will copy to new RAM address here
@@ -52,7 +68,7 @@ func (p player) newFirstName(newName string) {
 }
 
 func (p *player) newFirstNamePointer(newName string) {
-	p.firstName = newName
+	(*p).firstName = newName
 }
 
 func (p player) printSelf() {
