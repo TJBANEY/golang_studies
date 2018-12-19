@@ -58,6 +58,7 @@ func main() {
 
 	// creating new pointer variable to pass in to function receiver is a little tedious, and there is a shortcut for it.
 	// As long as the type is correct, you can pass in a non pointer value to a function receiver expecting a pointer value.
+	// Golang will automatically convert "player type" into "player pointer type" for us.
 	jim.newFirstNamePointer("Blurbington")
 	jim.printSelf()
 }
