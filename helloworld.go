@@ -13,5 +13,9 @@ func main() {
 	// fmt.Println("======")
 	// remainingCards.print()
 
-	fmt.Println(cards.toString())
+	// Create Players from player struct
+	tim := player{firstName: "Timothy", lastName: "Baney"}
+	fmt.Println(tim)
+
+	// fmt.Println(cards.toString())
 }
