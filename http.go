@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -36,6 +37,21 @@ func makeGetRequest() {
 	fmt.Println(string(bs))
 	// 1. Response Body will take empty byte slice passed into Read function as it's parameter.
 	// 2. Response Body will pump it's HTML response into that empty byte slice into the 'Read' function.
+
+	// Go does have a lot of built-in helper functions for automatically working with Reader interfaces, and getting data out of Reader type, and into the terminal.
+
+	//======= QUICKER WAY OF DOING THE ABOVE =========//
+	io.Copy(os.Stdout, resp.Body)
+	// Copy just pipes data from Reader to Writer
+
+	// 1. Take byte slice, and pass it to some value that implements a "Writer" interface.
+	// 2. Writer interface describes something that can take info and send it outside of our program.
+	// 3. Writer is used to write outgoing request or write some information to a text file on your HDrive, or to make an outgoing HTTP request, or log to a terminal, etc.
+	// 4. For us to use the "Writer" interface we have to go through the Go standard library and find something that implements the Writer interface, and use that to log info
+	// 5. In order for something to implement Writer interface, it needs to use Write method on "Writer" inferface
+	// e.g. => Write(p []byte) (n int, err error)
+	// 6. io.Copy function takes in a Writer type, and Reader type as parameters.
+	// 7.  io.Copy(os.Stdout => "*File" type implements Writer interface, resp.Body => implements Reader type)
 }
 
 // HTTP has a property of BODY which is of type io.ReadCloser
