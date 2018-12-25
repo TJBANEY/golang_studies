@@ -22,8 +22,8 @@ func iterateUrls(c chan string) {
 	fmt.Println(<-c) // <- Blocking call, Main routine will say "Okay, I'm going to wait until there is a message in the channel"
 	// Receiving messages from a channel is a blocking thing.
 
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-c)
+	for l := range c {
+		go checkLink(l, c)
 	}
 }
 
@@ -31,10 +31,10 @@ func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
 	if err != nil {
 		fmt.Println(link, "might be down!")
-		c <- "Might be down I think"
+		c <- link
 		return
 	}
 
 	fmt.Println(link, "is up!")
-	c <- "Yep, its up"
+	c <- link
 }
