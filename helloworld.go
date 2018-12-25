@@ -91,7 +91,28 @@ func main() {
 	colors["blue"] = "#0000ff"
 	delete(colors, "red")
 
+	// Iterate over map
+	printMap(colors)
+
 	// When to use Struct, and when to use Map since they are similar.
+	// 1 - Keys and values in Map are strongly typed, but they are not in Structs
+	// 2 - Keys are NOT indexed in Structs
+	// 3 - Map is reference type, and Struct is value type
+	// 4 - With Maps, you don't need to know all the keys at compile time. You can create it, delete fields, add fields, change fields before code is compiled.
+	// 5 - With Structs, you NEED to know all the keys at compile time.
+	// Use Map when you need to represent a collection of related properties
+	// Use Struct when you need to represent a "Thing" with a lot of different properties, much like a JS object literal, or Python class
+
+	// ====== INTERFACES SANDBOX ======= //
+
+	// Since function receivers can only be one type, if we wanted to use the same function but with a different type, we would need to create a brand new function
+	// Interfaces solves this problem
+
+	eb := englishBot{}
+	sb := spanishBot{}
+
+	printGreeting(eb)
+	printGreeting(sb)
 }
 
 // receiver will copy to new RAM address here
