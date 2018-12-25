@@ -13,6 +13,8 @@ import (
 
 // ^ In the above, the Reader Interface's 'Read' method will take an empty byte array.
 
+type logWriter struct{}
+
 func makeGetRequest() {
 	resp, err := http.Get("https://www.google.com")
 	if err != nil {
@@ -41,7 +43,7 @@ func makeGetRequest() {
 	// Go does have a lot of built-in helper functions for automatically working with Reader interfaces, and getting data out of Reader type, and into the terminal.
 
 	//======= QUICKER WAY OF DOING THE ABOVE =========//
-	io.Copy(os.Stdout, resp.Body)
+	// io.Copy(os.Stdout, resp.Body)
 	// Copy just pipes data from Reader to Writer
 
 	// 1. Take byte slice, and pass it to some value that implements a "Writer" interface.
@@ -52,6 +54,9 @@ func makeGetRequest() {
 	// e.g. => Write(p []byte) (n int, err error)
 	// 6. io.Copy function takes in a Writer type, and Reader type as parameters.
 	// 7.  io.Copy(os.Stdout => "*File" type implements Writer interface, resp.Body => implements Reader type)
+
+	lw := logWriter{}
+	io.Copy(lw, resp.Body)
 }
 
 // HTTP has a property of BODY which is of type io.ReadCloser
@@ -67,3 +72,10 @@ func makeGetRequest() {
 // ReadCloser interface
 //   --Reader interface
 //   --Closer interface
+
+func (logWriter) Write(bs []byte) (int, error) {
+	fmt.Println(string(bs))
+	fmt.Println("Just wrote this many bytes:", len(bs))
+
+	return len(bs), nil
+}
