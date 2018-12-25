@@ -110,7 +110,9 @@ func main() {
 	// printGreeting(eb)
 	// printGreeting(sb)
 
-	makeGetRequest()
+	// makeGetRequest()
+	c := make(chan string)
+	iterateUrls(c)
 }
 
 // receiver will copy to new RAM address here
