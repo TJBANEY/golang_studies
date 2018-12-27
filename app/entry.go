@@ -1,6 +1,14 @@
 package main
 
+
+import (
+	"fmt"
+	"github.com/TJBANEY/golang_studies/code_wars_pkg"
+)
+
 func main() {
+	code_wars.CartesianNeighbor(5, 7)
+	fmt.Println("First package creation and usage SUCCESS!")
 	// cards := newDeckFromFile("my_cards")
 	// cards.saveToFile("my_cards")
 
@@ -111,8 +119,8 @@ func main() {
 	// printGreeting(sb)
 
 	// makeGetRequest()
-	c := make(chan string)
-	iterateUrls(c)
+	// c := make(chan string)
+	// iterateUrls(c)
 }
 
 // receiver will copy to new RAM address here
