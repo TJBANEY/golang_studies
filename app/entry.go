@@ -1,26 +1,14 @@
 package main
 
-
 import (
 	"fmt"
-	"github.com/TJBANEY/golang_studies/code_wars_pkg"
+
+	codeWars "github.com/TJBANEY/golang_studies/code_wars_pkg"
 )
 
 func main() {
-	code_wars.CartesianNeighbor(5, 7)
-	fmt.Println("First package creation and usage SUCCESS!")
-	// cards := newDeckFromFile("my_cards")
-	// cards.saveToFile("my_cards")
-
-	// cards := newDeck()
-	// cards.shuffle()
-
-	// hand, remainingCards := deal(cards, 5)
-	// hand.print()
-	// fmt.Println("======")
-	// remainingCards.print()
-
-	// fmt.Println(cards.toString())
+	neighbors := codeWars.CartesianNeighbor(6, 2)
+	fmt.Println(neighbors)
 
 	// Create Players from player struct
 
@@ -135,3 +123,19 @@ func main() {
 // func (p player) printSelf() {
 // 	fmt.Printf("%+v", p)
 // }
+
+func cardStuff() {
+	//======= Card tutorial stuff to be deleted/sorted later ========//
+
+	// cards := newDeckFromFile("my_cards")
+	// cards.saveToFile("my_cards")
+
+	// cards := newDeck()
+	// cards.shuffle()
+
+	// hand, remainingCards := deal(cards, 5)
+	// hand.print()
+	// fmt.Println("======")
+	// remainingCards.print()
+	// fmt.Println(cards.toString())
+}

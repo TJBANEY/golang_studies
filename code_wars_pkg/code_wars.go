@@ -1,15 +1,6 @@
-package code_wars
+package codeWars
 
-import (
-	"fmt"
-)
-
-func code_wars(){
-	fmt.Println("Test")
-	CartesianNeighbor(5, 7)
-}
-
-// A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates, 
+// CartesianNeighbor - A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates,
 // which are the signed distances to the point from two fixed perpendicular directed lines, measured in the same unit of length.
 // The сoordinates of a point in the grid are written as (x,y). Each point in a coordinate system has eight neighboring points. Provided that the grid step = 1.
 // It is necessary to write a function that takes a coordinate on the x-axis and y-axis and returns a list of all the neighboring points. Points inside list
@@ -19,21 +10,16 @@ func CartesianNeighbor(x, y int) [][]int {
 	neighbors := [][]int{}
 
 	// Array of fixed length 8 that holds slices of type int
-	relative_coords := [8][]int{{0, 1},{0, -1},{-1, 0},{1, 0},{-1, -1},{-1, 1},{1, 1},{1, -1}}
+	relativeCoords := [8][]int{{0, 1}, {0, -1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}}
 
-	for _, rel_coord := range relative_coords {
-		fmt.Println(rel_coord)
-		// neighbor := [2]int{x+}
-		// neighbors = append(neighbors, x +)
-		// s = append(s, 0)
+	for _, relCoord := range relativeCoords {
+		xAxis := x + relCoord[0]
+		yAxis := y + relCoord[1]
+
+		neighbor := []int{xAxis, yAxis}
+		neighbors = append(neighbors, neighbor)
 	}
 
-	// [[-1, +1], [-1, -1], [+1, +1], [+1, -1], [+1, 0], [-1, 0], [0, -1], [0, +1]]
-
-	fmt.Println(relative_coords)
-
-	// Arrays are immutable in size, perhaps completely?
-	// Slices can have items added or removed but are still references to some underlying array.
 	return neighbors
 
 	// Example Result
