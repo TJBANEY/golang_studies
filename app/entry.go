@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	neighbors := codeWars.CartesianNeighbor(6, 2)
+	neighbors := codeWars.CartesianNeighbor(2, 2)
 	fmt.Println(neighbors)
 
 	// Create Players from player struct

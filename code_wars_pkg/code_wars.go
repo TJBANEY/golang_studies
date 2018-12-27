@@ -10,7 +10,7 @@ func CartesianNeighbor(x, y int) [][]int {
 	neighbors := [][]int{}
 
 	// Array of fixed length 8 that holds slices of type int
-	relativeCoords := [8][]int{{0, 1}, {0, -1}, {-1, 0}, {1, 0}, {-1, -1}, {-1, 1}, {1, 1}, {1, -1}}
+	relativeCoords := [8][]int{{-1, -1}, {0, -1}, {1, -1}, {-1, 0}, {1, 0}, {-1, 1}, {0, 1}, {1, 1}}
 
 	for _, relCoord := range relativeCoords {
 		xAxis := x + relCoord[0]
