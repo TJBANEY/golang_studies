@@ -6,6 +6,7 @@ import (
 
 func code_wars(){
 	fmt.Println("Test")
+	CartesianNeighbor(5, 7)
 }
 
 // A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates, 
@@ -14,16 +15,26 @@ func code_wars(){
 // It is necessary to write a function that takes a coordinate on the x-axis and y-axis and returns a list of all the neighboring points. Points inside list
 // dont have to been sorted (any order is valid).
 func CartesianNeighbor(x, y int) [][]int {
-	intArrayOne := []int{}
-	intArrayTwo := []int{}
-	intArrayArray := [][]int{intArrayOne, intArrayTwo}
+	// Slice that holds int slices. This is what will be returned
+	neighbors := [][]int{}
 
+	// Array of fixed length 8 that holds slices of type int
+	relative_coords := [8][]int{{0, 1},{0, -1},{-1, 0},{1, 0},{-1, -1},{-1, 1},{1, 1},{1, -1}}
+
+	for _, rel_coord := range relative_coords {
+		fmt.Println(rel_coord)
+		// neighbor := [2]int{x+}
+		// neighbors = append(neighbors, x +)
+		// s = append(s, 0)
+	}
 
 	// [[-1, +1], [-1, -1], [+1, +1], [+1, -1], [+1, 0], [-1, 0], [0, -1], [0, +1]]
 
+	fmt.Println(relative_coords)
+
 	// Arrays are immutable in size, perhaps completely?
 	// Slices can have items added or removed but are still references to some underlying array.
-	return intArrayArray
+	return neighbors
 
 	// Example Result
 	// CartesianNeighbor(2,2) -> {{1,1},{1,2},{1,3},{2,1},{2,3},{3,1},{3,2},{3,3}}
