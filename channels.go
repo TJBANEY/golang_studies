@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 var links = []string{
@@ -15,6 +16,7 @@ var links = []string{
 
 func iterateUrls(c chan string) {
 	for _, link := range links {
+		time.Sleep(time.Second)
 		checkLink(link, c)
 	}
 
@@ -23,7 +25,10 @@ func iterateUrls(c chan string) {
 	// Receiving messages from a channel is a blocking thing.
 
 	for l := range c {
-		go checkLink(l, c)
+		go func(link string) {
+			time.Sleep(5 * time.Second)
+			checkLink(link, c)
+		}(l)
 	}
 }
 
