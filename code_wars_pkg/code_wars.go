@@ -25,3 +25,21 @@ func CartesianNeighbor(x, y int) [][]int {
 	// Example Result
 	// CartesianNeighbor(2,2) -> {{1,1},{1,2},{1,3},{2,1},{2,3},{3,1},{3,2},{3,3}}
 }
+
+// CartesianNeighborAlternate - Alternative solution for CartesianNeighbor problem
+func CartesianNeighborAlternate(x, y int) [][]int {
+	xRange := [3]int{x - 1, x, x + 1}
+	yRange := [3]int{y - 1, y, y + 1}
+	neighbors := [][]int{}
+
+	for _, yCoord := range yRange {
+		for _, xCoord := range xRange {
+			if !(xCoord == x && yCoord == y) {
+				neighbor := []int{xCoord, yCoord}
+				neighbors = append(neighbors, neighbor)
+			}
+		}
+	}
+
+	return neighbors
+}

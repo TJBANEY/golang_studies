@@ -10,6 +10,9 @@ func main() {
 	neighbors := codeWars.CartesianNeighbor(2, 2)
 	fmt.Println(neighbors)
 
+	newNeighbors := codeWars.CartesianNeighborAlternate(2, 2)
+	fmt.Println(newNeighbors)
+
 	// Create Players from player struct
 
 	// tim := player{firstName: "Timothy", lastName: "Baney"}
