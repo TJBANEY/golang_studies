@@ -28,18 +28,16 @@ func CartesianNeighbor(x, y int) [][]int {
 
 // CartesianNeighborAlternate - Alternative solution for CartesianNeighbor problem
 func CartesianNeighborAlternate(x, y int) [][]int {
-	xRange := [3]int{x - 1, x, x + 1}
-	yRange := [3]int{y - 1, y, y + 1}
+	xRange := []int{x - 1, x, x + 1}
+	yRange := []int{y - 1, y, y + 1}
 	neighbors := [][]int{}
 
 	for _, yCoord := range yRange {
 		for _, xCoord := range xRange {
 			if !(xCoord == x && yCoord == y) {
-				neighbor := []int{xCoord, yCoord}
-				neighbors = append(neighbors, neighbor)
+				neighbors = append(neighbors, []int{xCoord, yCoord})
 			}
 		}
 	}
-
 	return neighbors
 }
