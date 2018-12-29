@@ -7,9 +7,9 @@ import (
 
 // Given a string with friends to visit in different states:
 
-// ad3="John Daggett, 341 King Road, Plymouth MA
+// John Daggett, 341 King Road, Plymouth MA
 // Alice Ford, 22 East Broadway, Richmond VA
-// Sal Carpenter, 73 6th Street, Boston MA"
+// Sal Carpenter, 73 6th Street, Boston MA
 
 // we want to produce a result that sorts the names by state and lists the name of the state
 // followed by the name of each person residing in that state (people's names sorted). When the result is printed we get:
@@ -28,24 +28,34 @@ var statesMap = map[string]string{
 // ByState - ..
 func ByState(addressList string) (stateString string) {
 	sortdAddrs := make(map[string][]string)
-	splitAddresses := strings.Split(addressList, "\n")
+	splitAddrs := strings.Split(addressList, "\n")
 	// states := []string{}
 
-	for _, address := range splitAddresses {
+	// For address in list of friend's addresses
+	for _, address := range splitAddrs {
 		splitAddress := strings.Split(address, ",")
-		city := strings.Split(splitAddress[2], " ")[1]
-		stateAbbr := strings.Split(splitAddress[2], " ")[2]
+		name := strings.Split(splitAddress[0], " ")
+		street := splitAddress[1]
+		cityState := strings.Split(splitAddress[2], " ")
+		city := cityState[1]
+		stateAbbr := cityState[2]
 		fullState := statesMap[stateAbbr]
 
-		sortdAddrs[fullState] = append(sortdAddrs[fullState], city)
+		fmt.Println(name[len(name)-2:])
+		fmt.Println(len(name))
 
-		// stateAbbr[1] -> Plymouth
-		// stateAbbr[2] -> MA
+		reformattedAddress := fmt.Sprintf("%v%v %v %v", name, street, city, fullState)
+		sortdAddrs[fullState] = append(sortdAddrs[fullState], reformattedAddress)
 	}
 
-	fmt.Println(sortdAddrs)
-
-	return "some string"
+	finalString := ""
+	for k, v := range sortdAddrs {
+		finalString = finalString + fmt.Sprintf("%v\n", k)
+		for _, addr := range v {
+			finalString = finalString + fmt.Sprintf("..... %v\n", addr)
+		}
+	}
+	return ""
 }
 
 // Example result
