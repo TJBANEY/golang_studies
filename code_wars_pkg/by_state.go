@@ -27,20 +27,23 @@ var statesMap = map[string]string{
 
 // ByState - ..
 func ByState(addressList string) (stateString string) {
+	sortdAddrs := make(map[string][]string)
 	splitAddresses := strings.Split(addressList, "\n")
-	states := []string{}
+	// states := []string{}
 
-	for i, address := range splitAddresses {
+	for _, address := range splitAddresses {
 		splitAddress := strings.Split(address, ",")
-		fmt.Println(splitAddress[2])
+		city := strings.Split(splitAddress[2], " ")[1]
+		stateAbbr := strings.Split(splitAddress[2], " ")[2]
+		fullState := statesMap[stateAbbr]
 
-		if (i+1)%3 == 0 {
-			// fmt.Println(addressSection)
-			states = append(states, statesMap[address])
-		}
+		sortdAddrs[fullState] = append(sortdAddrs[fullState], city)
+
+		// stateAbbr[1] -> Plymouth
+		// stateAbbr[2] -> MA
 	}
 
-	// fmt.Println(states)
+	fmt.Println(sortdAddrs)
 
 	return "some string"
 }
