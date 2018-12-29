@@ -13,6 +13,13 @@ func main() {
 	newNeighbors := codeWars.CartesianNeighborAlternate(2, 2)
 	fmt.Println(newNeighbors)
 
+	addressList := `John Daggett, 341 King Road, Plymouth MA
+	                Alice Ford, 22 East Broadway, Richmond VA
+					Sal Carpenter, 73 6th Street, Boston MA`
+
+	organizedByState := codeWars.ByState(addressList)
+	fmt.Println(organizedByState)
+
 	// Create Players from player struct
 
 	// tim := player{firstName: "Timothy", lastName: "Baney"}
