@@ -14,10 +14,33 @@ import (
 // we want to produce a result that sorts the names by state and lists the name of the state
 // followed by the name of each person residing in that state (people's names sorted). When the result is printed we get:
 
+var statesMap = map[string]string{
+	"AZ": "Arizona",
+	"CA": "California",
+	"ID": "Idaho",
+	"IN": "Indiana",
+	"MA": "Massachusetts",
+	"OK": "Oklahoma",
+	"PA": "Pennsylvania",
+	"VA": "Virginia",
+}
+
 // ByState - ..
 func ByState(addressList string) (stateString string) {
-	splitAddress := strings.Split(addressList, ",")
-	fmt.Println(splitAddress)
+	splitAddresses := strings.Split(addressList, "\n")
+	states := []string{}
+
+	for i, address := range splitAddresses {
+		splitAddress := strings.Split(address, ",")
+		fmt.Println(splitAddress[2])
+
+		if (i+1)%3 == 0 {
+			// fmt.Println(addressSection)
+			states = append(states, statesMap[address])
+		}
+	}
+
+	// fmt.Println(states)
 
 	return "some string"
 }
